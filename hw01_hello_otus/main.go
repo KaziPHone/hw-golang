@@ -7,6 +7,5 @@ import (
 )
 
 func main() {
-	//коммент
 	fmt.Println(reverse.String("Hello, OTUS!"))
 }
