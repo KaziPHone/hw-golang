@@ -44,7 +44,6 @@ func multiRune(ch, c rune) string {
 		result += string(ch)
 	}
 	return result
-
 }
 
 func validate(v []rune) bool {
