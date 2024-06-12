@@ -5,6 +5,11 @@ run:
     - !bench
 
 linters-settings:
+  depguard:
+    rules:
+      test:
+        allow:
+          - github.com/stretchr
   funlen:
     lines: 150
     statements: 80
