@@ -65,3 +65,4 @@ linters:
     - unparam
     - unused
     - whitespace
+    - testify
