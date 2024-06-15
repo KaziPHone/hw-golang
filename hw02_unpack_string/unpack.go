@@ -3,6 +3,7 @@ package hw02unpackstring
 import (
 	"errors"
 	"strconv"
+	"strings"
 	"unicode"
 )
 
@@ -21,29 +22,21 @@ func Unpack(v string) (string, error) {
 }
 
 func buildString(arrV []rune) string {
-	result := ""
+	var builder strings.Builder
 	for i, ch := range arrV {
 		switch {
 		case i == len(arrV)-1 && unicode.IsLetter(arrV[i]):
-			result += string(ch)
+			builder.WriteString(string(ch))
 		case i < len(arrV)-1 && unicode.IsLetter(arrV[i]) && unicode.IsDigit(arrV[i+1]):
-			result += multiRune(arrV[i], arrV[i+1])
+			count, _ := strconv.Atoi(string(arrV[i+1]))
+			builder.WriteString(strings.Repeat(string(arrV[i]), count))
 		case i < len(arrV)-1 && unicode.IsLetter(arrV[i]) && unicode.IsLetter(arrV[i+1]):
-			result += string(ch)
+			builder.WriteString(string(ch))
 		case i < len(arrV)-1 && unicode.IsLetter(arrV[i]):
 			continue
 		}
 	}
-	return result
-}
-
-func multiRune(ch, c rune) string {
-	result := ""
-	count, _ := strconv.Atoi(string(c))
-	for i := 0; i < count; i++ {
-		result += string(ch)
-	}
-	return result
+	return builder.String()
 }
 
 func validate(v []rune) bool {
