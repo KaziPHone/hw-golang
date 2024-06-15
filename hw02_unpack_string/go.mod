@@ -1,4 +1,4 @@
-module github.com/kaziphone/hw02_unpack_string
+module github.com/kaziphone/hw-golang/hw02_unpack_string
 
 go 1.22
 
