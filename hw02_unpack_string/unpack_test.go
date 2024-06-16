@@ -4,6 +4,7 @@ import (
 	"errors"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -42,4 +43,19 @@ func TestUnpackInvalidString(t *testing.T) {
 			require.Truef(t, errors.Is(err, ErrInvalidString), "actual error %q", err)
 		})
 	}
+}
+
+func Test_buildString(t *testing.T) {
+	t.Run("test buildString", func(t *testing.T) {
+		assert.Equal(t, "aaa", buildString([]rune("a3")))
+		assert.Equal(t, "aaab", buildString([]rune("a3b")))
+	})
+}
+
+func Test_validate(t *testing.T) {
+	t.Run("test validate", func(t *testing.T) {
+		assert.False(t, validate([]rune("3")))
+		assert.False(t, validate([]rune("a53")))
+		assert.True(t, validate([]rune("a5")))
+	})
 }
