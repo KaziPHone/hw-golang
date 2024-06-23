@@ -28,7 +28,7 @@ func arrToMapCounter(textArray []string) map[string]int {
 
 func sortedMapCounterToArr(mText map[string]int) []string {
 	kvArray := []KeyValue{}
-	for key, _ := range mText {
+	for key := range mText {
 		kvArray = append(kvArray, KeyValue{
 			value: mText[key],
 			key:   key,
