@@ -17,6 +17,7 @@ linters-settings:
           - errors
           - testing
           - strings
+          - sort
   funlen:
     lines: 150
     statements: 80

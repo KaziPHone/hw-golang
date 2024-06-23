@@ -11,8 +11,8 @@ type KeyValue struct {
 }
 
 func Top10(text string) []string {
-	text = strings.Replace(text, "\n", " ", -1)
-	text = strings.Replace(text, "\t", " ", -1)
+	text = strings.ReplaceAll(text, "\n", " ")
+	text = strings.ReplaceAll(text, "\t", " ")
 	return sortedMapCounterToArr(arrToMapCounter(strings.Split(text, " ")))
 }
 
@@ -20,7 +20,7 @@ func arrToMapCounter(textArray []string) map[string]int {
 	mText := make(map[string]int)
 	for _, v := range textArray {
 		if v != "" {
-			mText[v] += 1
+			mText[v]++
 		}
 	}
 	return mText
