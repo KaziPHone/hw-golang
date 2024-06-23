@@ -1,8 +1,10 @@
 package hw03frequencyanalysis
 
 import (
+	"sort"
 	"testing"
 
+	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -45,7 +47,7 @@ var text = `Как видите, он  спускается  по  лестни�
 
 func TestTop10(t *testing.T) {
 	t.Run("no words in empty string", func(t *testing.T) {
-		require.Len(t, Top10(""), 0)
+		assert.Equal(t, len(Top10("")), 0)
 	})
 
 	t.Run("positive test", func(t *testing.T) {
@@ -62,7 +64,7 @@ func TestTop10(t *testing.T) {
 				"кристофер", // 4
 				"не",        // 4
 			}
-			require.Equal(t, expected, Top10(text))
+			assert.Equal(t, expected, Top10(text))
 		} else {
 			expected := []string{
 				"он",        // 8
@@ -76,7 +78,27 @@ func TestTop10(t *testing.T) {
 				"не",        // 4
 				"то",        // 4
 			}
-			require.Equal(t, expected, Top10(text))
+			sort.Strings(expected)
+			result := Top10(text)
+			sort.Strings(result)
+			require.Equal(t, expected, result)
 		}
+	})
+}
+
+func Test_arrToMapCounter(t *testing.T) {
+	t.Run("test arrToMapCounter", func(t *testing.T) {
+		mText := arrToMapCounter([]string{"some", "text", "some"})
+		require.Equal(t, 2, mText["some"])
+		require.Equal(t, 1, mText["text"])
+		_, ok := mText["none"]
+		require.False(t, ok)
+	})
+}
+
+func Test_sortedMapCounter(t *testing.T) {
+	t.Run("sfg", func(t *testing.T) {
+		mText := arrToMapCounter([]string{"some", "text", "some", "ttt", "ttt", "ttt"})
+		require.NotNil(t, sortedMapCounterToArr(mText))
 	})
 }

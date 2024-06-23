@@ -10,6 +10,7 @@ linters-settings:
       test:
         allow:
           - github.com/stretchr
+          - github.com/kaziphone/hw-golang
           - errors
           - strconv
           - unicode
