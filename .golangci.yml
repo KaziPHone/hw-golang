@@ -10,12 +10,14 @@ linters-settings:
       test:
         allow:
           - github.com/stretchr
+          - github.com/kaziphone/hw-golang
           - errors
           - strconv
           - unicode
           - errors
           - testing
           - strings
+          - sort
   funlen:
     lines: 150
     statements: 80
