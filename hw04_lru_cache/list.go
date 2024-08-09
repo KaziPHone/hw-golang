@@ -75,22 +75,22 @@ func (l *list) MoveToFront(i *ListItem) {
 		return
 	}
 
-	firstNode := l.first
-	iNext := i.Next
-	iPrev := i.Prev
+	first := l.first
+	next := i.Next
+	prev := i.Prev
 
-	if iPrev != nil {
-		iPrev.Next = iNext
+	if prev != nil {
+		prev.Next = next
 	}
 
-	if iNext != nil {
-		iNext.Prev = iPrev
+	if next != nil {
+		next.Prev = prev
 	}
 
-	i.Next = firstNode
+	i.Next = first
 	i.Prev = nil
 	l.first = i
-	firstNode.Prev = i
+	first.Prev = i
 }
 
 func (l *list) Remove(i *ListItem) {
