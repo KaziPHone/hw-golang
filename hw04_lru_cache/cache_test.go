@@ -48,10 +48,6 @@ func TestCache(t *testing.T) {
 		require.False(t, ok)
 		require.Nil(t, val)
 	})
-
-	t.Run("purge logic", func(t *testing.T) {
-		// Write me
-	})
 }
 
 func TestCacheMultithreading(t *testing.T) {
