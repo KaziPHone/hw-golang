@@ -10,6 +10,7 @@ type List interface {
 	MoveToFront(i *ListItem)
 }
 
+//comment
 type ListItem struct {
 	Value interface{}
 	Next  *ListItem
